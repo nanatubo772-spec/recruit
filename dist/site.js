@@ -18,50 +18,47 @@
   if (!track) return;
 
   const slides = Array.from(track.querySelectorAll('.slide'));
-  const dots = Array.from(document.querySelectorAll('.slider-dots button'));
-  const count = document.getElementById('slide-count');
-  const previous = document.getElementById('slide-prev');
-  const next = document.getElementById('slide-next');
+  const mobile = window.matchMedia('(max-width: 699px)');
   let activeIndex = 0;
-  let scrollTimer;
+  let timer;
+  let interrupted = false;
 
-  function update(index) {
-    activeIndex = Math.max(0, Math.min(slides.length - 1, index));
-    count.textContent = `${activeIndex + 1} / ${slides.length}`;
-    dots.forEach((dot, dotIndex) => dot.setAttribute('aria-pressed', String(dotIndex === activeIndex)));
-    previous.disabled = activeIndex === 0;
-    next.disabled = activeIndex === slides.length - 1;
+  function stop() {
+    interrupted = true;
+    clearTimeout(timer);
   }
 
   function goTo(index) {
-    const target = slides[Math.max(0, Math.min(slides.length - 1, index))];
-    track.scrollTo({ left: target.offsetLeft - slides[0].offsetLeft, behavior: 'auto' });
-    update(index);
+    activeIndex = Math.max(0, Math.min(slides.length - 1, index));
+    track.scrollTo({ left: slides[activeIndex].offsetLeft - slides[0].offsetLeft, behavior: 'smooth' });
   }
 
-  previous.addEventListener('click', () => goTo(activeIndex - 1));
-  next.addEventListener('click', () => goTo(activeIndex + 1));
-  dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+  function advance() {
+    if (interrupted || !mobile.matches || activeIndex >= slides.length - 1) return;
+    goTo(activeIndex + 1);
+    if (activeIndex < slides.length - 1) timer = setTimeout(advance, 3300);
+  }
+
+  track.addEventListener('pointerdown', stop, { passive: true });
+  track.addEventListener('touchstart', stop, { passive: true });
+  track.addEventListener('wheel', stop, { passive: true });
   track.addEventListener('keydown', (event) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
+    stop();
+    activeIndex = slides.reduce((nearest, slide, index) => {
+      const offset = Math.abs(slide.offsetLeft - slides[0].offsetLeft - track.scrollLeft);
+      return offset < nearest.offset ? { index, offset } : nearest;
+    }, { index: 0, offset: Infinity }).index;
     goTo(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
   });
-  track.addEventListener('scroll', () => {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => {
-      const left = track.scrollLeft;
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      if (left >= maxScroll - 3) {
-        update(slides.length - 1);
-        return;
-      }
-      const nearest = slides.reduce((winner, slide, index) => {
-        const distance = Math.abs(slide.offsetLeft - slides[0].offsetLeft - left);
-        return distance < winner.distance ? { index, distance } : winner;
-      }, { index: 0, distance: Infinity });
-      update(nearest.index);
-    }, 80);
-  }, { passive: true });
-  update(0);
+
+  if (!prefersReducedMotion.matches && 'IntersectionObserver' in window) {
+    const starter = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting || !mobile.matches) return;
+      starter.disconnect();
+      timer = setTimeout(advance, 1700);
+    }, { threshold: 0.35 });
+    starter.observe(track);
+  }
 })();
