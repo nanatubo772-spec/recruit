@@ -1,0 +1,42 @@
+/* Mobile-first additions for the QR landing experience. */
+html{scroll-padding-top:76px}
+section[id]{scroll-margin-top:76px}
+.site-header{position:sticky;top:0;z-index:20;box-shadow:0 1px 0 #251e1a18}
+.photos{overflow:hidden;background:var(--paper);padding:64px 0 52px}
+.photos-heading{padding:0 7%;display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:22px}
+.photos-heading .section-num{margin-bottom:7px}
+.photos-heading h2{font-family:'Noto Serif JP',serif;font-size:clamp(28px,7vw,46px);line-height:1.35;margin:0}
+.slider-controls{display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:12px;font-weight:800}
+.slider-arrow{width:34px;height:34px;border:1px solid var(--ink);border-radius:50%;background:transparent;color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+.slider-arrow:hover,.slider-arrow:focus-visible{background:var(--ink);color:#fff}
+.slider-arrow:disabled{opacity:.38;cursor:default;background:transparent;color:var(--ink)}
+.slider-track{display:flex;gap:13px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-inline:7%;padding:0 7% 12px;scrollbar-width:none}
+.slider-track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 84%;height:340px;margin:0;position:relative;scroll-snap-align:start;overflow:hidden;background:#49362a}
+.slide img{transition:transform .6s ease}
+.slide:hover img{transform:scale(1.035)}
+.slide figcaption{position:absolute;left:15px;bottom:15px;background:var(--paper);color:var(--ink);padding:5px 12px;font-size:12px;font-weight:800}
+.slider-dots{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}
+.slider-dots button{width:10px;height:10px;border:0;border-radius:50%;background:#b2a696;cursor:pointer;padding:0}
+.slider-dots button[aria-pressed="true"]{width:26px;border-radius:9px;background:var(--red)}
+.access{display:flex;flex-direction:column;background:#ece4d8}
+.access-copy{padding:72px 7% 30px}
+.access h2{font-family:'Noto Serif JP',serif;font-size:clamp(36px,9vw,56px);line-height:1.45;margin:0 0 15px}
+.access p{line-height:2.1;margin:0 0 27px}
+.map-button{display:inline-flex;align-items:center;justify-content:space-between;gap:35px;min-width:235px;background:var(--red);color:#fff;padding:13px 18px;font-weight:800;font-size:14px}
+.map-button:hover{background:#963425}
+.map-wrap{padding:0 7% 70px}
+.map-wrap iframe{display:block;width:100%;height:340px;border:0;background:#d4d0c7}
+.map-wrap>a{display:block;text-align:right;font-size:12px;font-weight:700;text-decoration:underline;margin-top:9px}
+.mobile-nav{position:fixed;z-index:25;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);background:var(--ink);color:#fff;box-shadow:0 -8px 28px #0003;padding-bottom:env(safe-area-inset-bottom)}
+.mobile-nav a{text-align:center;padding:12px 2px;font-size:12px;font-weight:800;border-right:1px solid #ffffff30}
+.mobile-nav a:last-child{border-right:0;background:var(--red)}
+.mobile-nav a:focus-visible{outline-color:var(--gold);outline-offset:-4px}
+body{padding-bottom:calc(47px + env(safe-area-inset-bottom))}
+.js-ready [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.js-ready [data-reveal].is-visible{opacity:1;transform:none}
+.js-ready .hero-inner{animation:hero-in .65s both}
+@keyframes hero-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(min-width:681px){.photos{padding:90px 0 75px}.photos-heading{padding-inline:8%}.slider-track{padding-inline:8%;scroll-padding-inline:8%;gap:18px}.slide{flex-basis:84%;height:500px}.access{display:grid;grid-template-columns:43% 57%;align-items:center}.access-copy{padding:85px 11% 85px 18%}.map-wrap{padding:55px 14% 55px 0}.map-wrap iframe{height:430px}.mobile-nav{display:none}body{padding-bottom:0}}
+@media(max-width:400px){.photos-heading{align-items:start}.slider-controls{gap:5px}.slider-arrow{width:29px;height:29px;font-size:17px}.slide{height:300px}}
+@media(prefers-reduced-motion:reduce){.js-ready [data-reveal],.js-ready .hero-inner{opacity:1;transform:none;animation:none;transition:none}.slide img{transition:none}}
