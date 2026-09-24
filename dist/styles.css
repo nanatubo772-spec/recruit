@@ -123,3 +123,30 @@ footer{background:var(--navy);border-top:6px solid var(--red)}
 @keyframes contact-pop{from{opacity:0;transform:scale(.94) rotate(-1deg)}to{opacity:1;transform:none}}
 @keyframes cta-glint{0%,60%{transform:translateX(0) skewX(-20deg)}78%,100%{transform:translateX(650%) skewX(-20deg)}}
 @media(prefers-reduced-motion:reduce){.scroll-progress{display:none}.hero-visual img,.hero-copy>*,.hero-copy::after,.slider-track.is-visible .slide,.recruit-panel.is-visible dl>div,.recruit-panel.is-visible .contact-box,.mobile-cta::after{animation:none}.js-ready [data-reveal]{opacity:1;transform:none;filter:none}.button,.header-link,.contact-call,.contact-sub,.benefit,.benefit-number{transition:none}}
+
+/* Playful storefront details */
+.hero-actions{display:flex;align-items:center;gap:14px}
+.hero-stamp{flex:0 0 72px;width:72px;height:72px;display:grid;place-items:center;text-align:center;border:3px double #fff;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;font-weight:900;line-height:1.25;transform:rotate(8deg);box-shadow:3px 4px 0 var(--yellow);animation:stamp-in .7s .65s cubic-bezier(.2,1.5,.4,1) both}
+.hero-stamp:hover{animation:stamp-wiggle .5s ease}
+.poster-ticker{overflow:hidden;background:var(--navy);color:#fff;border-block:4px solid var(--yellow);white-space:nowrap}
+.ticker-track{display:flex;width:max-content;align-items:center;gap:20px;padding:8px 0;font-size:12px;font-weight:900;letter-spacing:.09em;animation:ticker-run 23s linear infinite}
+.ticker-track span{min-width:max-content}.ticker-track b{color:var(--yellow);font-size:9px}
+.numbered-section{position:relative;overflow:hidden;isolation:isolate}
+.numbered-section::before{content:attr(data-number);position:absolute;z-index:-1;right:-.04em;top:-.18em;color:#b6423209;font-size:clamp(150px,35vw,420px);font-weight:900;line-height:1;letter-spacing:-.1em;pointer-events:none}
+.numbered-section>*{position:relative}
+.benefit:nth-child(1){transform:rotate(-.6deg)}
+.benefit:nth-child(2){transform:rotate(.7deg)}
+.slide:nth-child(odd) img{transform:rotate(-.35deg)}
+.slide:nth-child(even) img{transform:rotate(.45deg)}
+.slide img{transition:transform .35s cubic-bezier(.2,.8,.25,1),filter .35s ease}
+.slide:hover img{transform:rotate(0) scale(1.025);filter:saturate(1.08)}
+.panel-top span{position:relative;transform:rotate(1.5deg);animation:status-breathe 2.8s ease-in-out infinite}
+.section-intro h2,.photos h2,.access h2{transition:letter-spacing .35s ease}
+.section-intro:hover h2,.photos-heading:hover h2,.access-copy:hover h2{letter-spacing:.01em}
+@keyframes ticker-run{to{transform:translateX(-50%)}}
+@keyframes stamp-in{from{opacity:0;transform:rotate(-20deg) scale(.25)}to{opacity:1;transform:rotate(8deg) scale(1)}}
+@keyframes stamp-wiggle{0%,100%{transform:rotate(8deg)}35%{transform:rotate(-4deg) scale(1.06)}70%{transform:rotate(12deg)}}
+@keyframes status-breathe{0%,100%{box-shadow:0 0 0 0 #e5ad1900}50%{box-shadow:0 0 0 5px #e5ad1938}}
+@media(max-width:360px){.hero-actions{gap:8px}.hero-stamp{flex-basis:62px;width:62px;height:62px;font-size:11px}.hero-actions .button{min-width:0;flex:1}}
+@media(min-width:700px){.hero-stamp{width:84px;height:84px;flex-basis:84px;font-size:13px}.ticker-track{padding:10px 0;font-size:13px}.numbered-section::before{right:3%;top:-.2em}}
+@media(prefers-reduced-motion:reduce){.hero-stamp,.ticker-track,.panel-top span{animation:none}.slide img{transition:none}}
