@@ -98,6 +98,32 @@
 
   applyContentConfig();
 
+  document.querySelectorAll('.benefit').forEach((element, index) => {
+    element.style.setProperty('--stagger', `${index * 110}ms`);
+  });
+  document.querySelectorAll('.slide').forEach((element, index) => {
+    element.style.setProperty('--stagger', `${index * 90}ms`);
+  });
+  document.querySelectorAll('.recruit-panel dl > div').forEach((element, index) => {
+    element.style.setProperty('--row', index);
+  });
+
+  const header = document.querySelector('.site-header');
+  let ticking = false;
+  function updateScrollEffects() {
+    const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollRange > 0 ? window.scrollY / scrollRange : 0;
+    root.style.setProperty('--scroll-progress', String(Math.max(0, Math.min(1, progress))));
+    header?.classList.toggle('is-scrolled', window.scrollY > 24);
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateScrollEffects);
+  }, { passive: true });
+  updateScrollEffects();
+
   if (!prefersReducedMotion.matches && 'IntersectionObserver' in window) {
     root.classList.add('js-ready');
     const observer = new IntersectionObserver((entries) => {

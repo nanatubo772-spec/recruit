@@ -89,3 +89,37 @@ body{background-color:var(--paper);background-image:radial-gradient(#7d65450d 1p
 footer{background:var(--navy);border-top:6px solid var(--red)}
 .mobile-cta{border-top:3px solid var(--navy);box-shadow:0 -5px 0 #e5ad19}
 @media(min-width:700px){.hero-visual{border-right:5px solid var(--red);border-bottom:0}.hero-copy::after{right:9%;top:65px}.recruit-panel dl div{grid-template-columns:125px 1fr}.benefit-number{width:58px;height:58px}.photos h2{font-size:29px}}
+
+/* Motion system */
+.scroll-progress{position:fixed;z-index:80;top:0;left:0;width:100%;height:4px;background:var(--yellow);transform:scaleX(var(--scroll-progress,0));transform-origin:left;pointer-events:none}
+.site-header{transition:height .3s ease,box-shadow .3s ease,background-color .3s ease}
+.site-header.is-scrolled{box-shadow:0 8px 25px #2b21182b}
+.hero-visual figure{overflow:hidden}
+.hero-visual img{animation:photo-arrive 1.05s cubic-bezier(.2,.75,.25,1) both;will-change:transform}
+.hero-food img{animation-delay:.12s}
+.hero-copy>*{animation:copy-rise .7s cubic-bezier(.2,.75,.25,1) both}
+.hero-copy>*:nth-child(2){animation-delay:.08s}.hero-copy>*:nth-child(3){animation-delay:.16s}.hero-copy>*:nth-child(4){animation-delay:.24s}.hero-copy>*:nth-child(5){animation-delay:.32s}
+.hero-copy::after{animation:pin-pop .65s .45s cubic-bezier(.2,1.7,.4,1) both}
+.button,.header-link,.contact-call,.contact-sub{transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease}
+.button:hover,.header-link:hover,.contact-call:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--navy)}
+.button span,.contact-call span:last-child,.mobile-cta b{display:inline-block;transition:transform .25s ease}
+.button:hover span,.contact-call:hover span:last-child{transform:translate(4px,-4px)}
+.benefit{transition:opacity .6s ease var(--stagger,0ms),transform .6s cubic-bezier(.2,.75,.25,1) var(--stagger,0ms),box-shadow .25s ease}
+.benefit:hover{transform:translateY(-5px) rotate(-.25deg);box-shadow:8px 10px 0 #26365026}
+.benefit:hover .benefit-number{transform:rotate(7deg) scale(1.06)}
+.benefit-number{transition:transform .35s cubic-bezier(.2,1.6,.4,1)}
+.js-ready [data-reveal]{opacity:0;transform:translateY(34px) scale(.985);filter:blur(5px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1),filter .7s ease}
+.js-ready [data-reveal].is-visible{opacity:1;transform:none;filter:none}
+.slider-track.is-visible .slide{animation:slide-enter .65s cubic-bezier(.2,.75,.25,1) both;animation-delay:var(--stagger,0ms)}
+.recruit-panel.is-visible dl>div{animation:row-enter .48s cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--row) * 55ms + 180ms)}
+.recruit-panel.is-visible .contact-box{animation:contact-pop .65s .55s cubic-bezier(.2,.9,.25,1) both}
+.mobile-cta{overflow:hidden}
+.mobile-cta::after{content:"";position:absolute;inset:-40% auto -40% -35%;width:22%;background:#fff4;transform:skewX(-20deg);animation:cta-glint 4.8s 1.2s ease-in-out infinite;pointer-events:none}
+@keyframes photo-arrive{from{opacity:0;transform:scale(1.1)}to{opacity:1;transform:scale(1)}}
+@keyframes copy-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pin-pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+@keyframes slide-enter{from{opacity:0;transform:translateX(35px) rotate(1deg)}to{opacity:1;transform:none}}
+@keyframes row-enter{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes contact-pop{from{opacity:0;transform:scale(.94) rotate(-1deg)}to{opacity:1;transform:none}}
+@keyframes cta-glint{0%,60%{transform:translateX(0) skewX(-20deg)}78%,100%{transform:translateX(650%) skewX(-20deg)}}
+@media(prefers-reduced-motion:reduce){.scroll-progress{display:none}.hero-visual img,.hero-copy>*,.hero-copy::after,.slider-track.is-visible .slide,.recruit-panel.is-visible dl>div,.recruit-panel.is-visible .contact-box,.mobile-cta::after{animation:none}.js-ready [data-reveal]{opacity:1;transform:none;filter:none}.button,.header-link,.contact-call,.contact-sub,.benefit,.benefit-number{transition:none}}
