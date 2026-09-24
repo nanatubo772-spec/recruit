@@ -42,3 +42,50 @@ footer{background:#211d19;color:#fff;padding:34px 20px 42px;font-size:12px}.foot
 .benefit-number{align-self:stretch;display:grid;place-items:center;border-radius:7px;background:#d5c9ba;color:#fff;font-family:'Noto Serif JP',serif;font-size:23px;font-weight:700;writing-mode:vertical-rl;letter-spacing:.08em}
 .benefit-number.meal{background:#c9946c}
 @media(min-width:700px){.benefit-copy{grid-template-columns:66px 1fr;min-height:170px}}
+
+/* Store-poster theme: warm paper, vermilion rules and navy accents. */
+:root{--paper:#f4ead7;--white:#fffaf0;--ink:#27201c;--muted:#675b4f;--red:#b64232;--line:#cdbb9f;--sand:#eadcc5;--navy:#263650;--yellow:#e5ad19}
+body{background-color:var(--paper);background-image:radial-gradient(#7d65450d 1px,transparent 1px);background-size:5px 5px}
+.site-header{background:rgba(255,250,240,.96);border-bottom:3px solid var(--red);box-shadow:0 3px 0 #26365018}
+.brand-mark{border-radius:1px;box-shadow:3px 3px 0 var(--navy)}
+.header-link{border:2px solid var(--navy);padding:5px 9px;background:var(--white);box-shadow:3px 3px 0 var(--red)}
+.hero{border-bottom:8px solid var(--red)}
+.hero-visual{gap:5px;background:var(--red);border-bottom:5px solid var(--red)}
+.hero-copy{position:relative}
+.hero-copy::after{content:"";position:absolute;right:21px;top:26px;width:13px;height:13px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 4px #fff8}
+.eyebrow,.section-kicker{color:var(--red);letter-spacing:.11em}
+.eyebrow{width:max-content;padding:3px 8px;background:var(--red);color:#fff;transform:rotate(-1deg)}
+.eyebrow span{display:none}
+.hero h1{letter-spacing:-.055em;text-shadow:2px 2px 0 #fff}
+.hero-facts{gap:8px}
+.hero-facts span{border:2px solid var(--navy);background:var(--white);border-radius:2px;box-shadow:3px 3px 0 #d4a927;font-weight:900}
+.button{border:2px solid var(--ink);box-shadow:4px 4px 0 var(--navy);border-radius:1px}
+.section-kicker{display:inline-block;border-bottom:3px solid var(--yellow);padding-bottom:2px}
+.section-intro h2,.access h2{font-family:'Noto Sans JP',sans-serif;font-weight:900;letter-spacing:-.035em}
+.appeal{background:#fffaf0}
+.benefit{border:2px solid var(--red);border-radius:2px;background:#f8ecd8;box-shadow:5px 5px 0 #26365020}
+.benefit-number{align-self:center;width:48px;height:48px;border-radius:50%;background:var(--navy);writing-mode:horizontal-tb;box-shadow:3px 3px 0 var(--yellow)}
+.benefit-number.meal{background:var(--red)}
+.benefit-label{background:var(--red);color:#fff;padding:1px 6px;transform:rotate(-1deg)}
+.photos{background:#f1e2ca;border-block:5px solid var(--red)}
+.photos h2{font-size:25px;color:var(--navy)}
+.slide img{border:3px solid var(--white);outline:2px solid var(--navy);box-shadow:4px 4px 0 #b6423240}
+.slide figcaption{color:var(--ink);font-weight:800}
+.recruit{background:#fffaf0}
+.recruit-panel{border:3px solid var(--red);border-radius:2px;background:#fff8e9;box-shadow:7px 7px 0 var(--navy)}
+.panel-top{background:var(--red);border-bottom:3px solid var(--red)}
+.panel-top span{background:var(--navy);border-radius:1px;border:1px solid #fff}
+.recruit-panel dl{padding:0}
+.recruit-panel dl div{grid-template-columns:100px 1fr;gap:0;padding:0;border-bottom:2px solid var(--red)}
+.recruit-panel dt{display:flex;align-items:center;padding:13px 10px;background:#f3d8bb;color:var(--red);border-right:2px solid var(--red);font-weight:900}
+.recruit-panel dd{padding:13px 14px;background:#fffaf0}
+.salary{color:var(--navy)}
+.contact-box{margin:18px;border:3px solid var(--navy);border-radius:2px;background:#fffaf0;box-shadow:4px 4px 0 var(--yellow)}
+.contact-label{display:inline-block;padding:1px 7px;background:var(--navy);color:#fff}
+.contact-call{border:2px solid var(--ink);box-shadow:3px 3px 0 var(--navy)}
+.contact-sub{color:var(--navy);border-bottom:2px solid var(--navy)}
+.access{background:#eadcc5}
+.map-wrap{border:3px solid var(--navy);border-radius:2px;box-shadow:6px 6px 0 var(--red)}
+footer{background:var(--navy);border-top:6px solid var(--red)}
+.mobile-cta{border-top:3px solid var(--navy);box-shadow:0 -5px 0 #e5ad19}
+@media(min-width:700px){.hero-visual{border-right:5px solid var(--red);border-bottom:0}.hero-copy::after{right:9%;top:65px}.recruit-panel dl div{grid-template-columns:125px 1fr}.benefit-number{width:58px;height:58px}.photos h2{font-size:29px}}
