@@ -12,7 +12,7 @@
 
 ## 文章や募集条件を変更する
 
-1. [GitHubのリポジトリ](https://github.com/nanatubo772-spec/recruit)を開き、会社のGitHubアカウントでログインします。
+1. [GitHubのリポジトリ](https://github.com/nanatubo772-spec/recruit)を開き、店のGitHubアカウントでログインします。
 2. ファイル一覧から **dist** を押します。
 3. **content-config.js** を押します。
 4. 画面右上の鉛筆マーク **Edit this file** を押します。
