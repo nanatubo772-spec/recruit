@@ -98,6 +98,29 @@
 
   applyContentConfig();
 
+  const mapElement = document.getElementById('shop-map');
+  if (mapElement && window.L) {
+    const shopPosition = [35.43475527686994, 139.601292014122];
+    const map = window.L.map(mapElement, {
+      center: shopPosition,
+      zoom: 17,
+      minZoom: 17,
+      maxZoom: 19,
+      scrollWheelZoom: false,
+      maxBounds: [[35.425, 139.59], [35.445, 139.613]],
+      maxBoundsViscosity: 0.8
+    });
+    window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      minZoom: 17,
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    window.L.marker(shopPosition).addTo(map).bindTooltip('ななつぼ 井土ヶ谷店', {
+      direction: 'top',
+      offset: [0, -8]
+    }).openTooltip();
+  }
+
   document.querySelectorAll('.benefit').forEach((element, index) => {
     element.style.setProperty('--stagger', `${index * 110}ms`);
   });
