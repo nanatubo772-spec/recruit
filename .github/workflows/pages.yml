@@ -1,7 +1,9 @@
 name: Publish recruitment page
 
-# 募集内容と応募先が確定してから、Actions 画面で手動実行する。
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:

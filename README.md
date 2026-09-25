@@ -16,11 +16,10 @@
 
 店長写真は掲載しない構成です。店の雰囲気は文章と店内写真で伝えます。お好み焼きの写真は料理イメージであり、実際のまかないの写真ではありません。
 
-## GitHub Pages で公開するとき
+## GitHub Pages の更新
 
-1. このリポジトリを GitHub に置きます。
-2. リポジトリの **Settings → Pages → Build and deployment** で **GitHub Actions** を選びます。
-3. 募集内容を確定させてから、**Actions → Publish recruitment page → Run workflow** を実行します。
-4. 公開されたURLをスマートフォンで確認し、そのURLからチラシ用QRコードを作ります。QRコードは公開URLが決まるまで印刷しません。
+`main` ブランチへ変更をプッシュすると、GitHub Actions が `dist/` を自動公開します。必要な場合は **Actions → Publish recruitment page → Run workflow** から手動でも再公開できます。
+
+公開URLをスマートフォンで確認してから、そのURLを使ってチラシ用QRコードを作ります。
 
 公開前に、写真の使用可否と応募先の表記も店長に確認してください。以前の非公開プレビューURLはチラシ用には使いません。
