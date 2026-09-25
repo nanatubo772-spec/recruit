@@ -49,7 +49,7 @@ window.NANATSUBO_CONTENT = {
     status: "スタッフ募集中",
     conditions: [
       { label: "仕事内容", value: "接客を中心とした店舗業務" },
-      { label: "時給", value: "確認中", note: "最新の金額を店長へ確認しています", highlight: true },
+      { label: "時給", value: "確認中", highlight: true },
       { label: "勤務時間", value: "18:00〜23:00", note: "1日3時間〜、週2日でもOK" },
       { label: "シフト", value: "希望シフト制", note: "土・日勤務、Wワーク歓迎" },
       { label: "応募条件", value: "年齢・経験・男女不問", note: "学生・フリーター・主婦（夫）、20代〜50代歓迎" },
@@ -67,4 +67,3 @@ window.NANATSUBO_CONTENT = {
     }
   }
 };
-
