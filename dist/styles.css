@@ -129,7 +129,8 @@ footer{background:var(--navy);border-top:6px solid var(--red)}
 .hero-stamp{flex:0 0 72px;width:72px;height:72px;display:grid;place-items:center;text-align:center;border:3px double #fff;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;font-weight:900;line-height:1.25;transform:rotate(8deg);box-shadow:3px 4px 0 var(--yellow);animation:stamp-in .7s .65s cubic-bezier(.2,1.5,.4,1) both}
 .hero-stamp:hover{animation:stamp-wiggle .5s ease}
 .poster-ticker{overflow:hidden;background:var(--navy);color:#fff;border-block:4px solid var(--yellow);white-space:nowrap}
-.ticker-track{display:flex;width:max-content;align-items:center;gap:20px;padding:8px 0;font-size:12px;font-weight:900;letter-spacing:.09em;animation:ticker-run 23s linear infinite}
+.ticker-track{display:flex;width:max-content;align-items:center;padding:8px 0;font-size:12px;font-weight:900;letter-spacing:.09em;animation:ticker-run 23s linear infinite;will-change:transform}
+.ticker-group{display:flex;flex:none;align-items:center;gap:20px;padding-right:20px}
 .ticker-track span{min-width:max-content}.ticker-track b{color:var(--yellow);font-size:9px}
 .numbered-section{position:relative;overflow:hidden;isolation:isolate}
 .numbered-section::before{content:attr(data-number);position:absolute;z-index:-1;right:-.04em;top:-.18em;color:#b6423209;font-size:clamp(150px,35vw,420px);font-weight:900;line-height:1;letter-spacing:-.1em;pointer-events:none}
