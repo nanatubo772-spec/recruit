@@ -62,7 +62,7 @@ window.NANATSUBO_CONTENT = {
       applicationLabel: "応募受付",
       applicationPhone: "045-334-7811",
       shopLabel: "店舗へ問い合わせる",
-      shopPhone: "045-308-7411",
+      shopPhone: "045-334-7811",
       note: "面接時は写真付き履歴書をご持参ください。"
     }
   }
